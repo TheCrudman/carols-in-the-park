@@ -1,0 +1,13 @@
+---
+import CarolCard from './CarolCard.astro';
+import { carols } from '../data/carols';
+---
+
+<div class="container mx-auto px-4 py-12">
+  <h2 class="text-3xl font-semibold mb-8 text-center">Carols We&#8217;re Singing Tonight</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {carols.map(carol => (
+      <CarolCard title={carol.title} id={carol.id} />
+    ))}
+  </div>
+</div>

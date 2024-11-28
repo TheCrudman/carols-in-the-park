@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import carolsLogo from '../../public/carols-logo.png';
+---
+
+<div class="container mx-auto px-4 py-16 text-center">
+  <Image 
+    src={carolsLogo}
+    alt="Carols in the Park" 
+    class="mx-auto mb-8 w-full max-w-xl"
+    width={600}
+    height={200}
+    format="webp"
+    quality={80}
+  />
+  <div class="text-2xl text-yellow-400 mb-2">7:00pm, Sunday 15th December</div>
+  <div class="text-xl mb-8">Albany Lakes Civic Park</div>
+  <p class="text-gray-300 max-w-2xl mx-auto">
+    Join us for a magical evening of Christmas carols under the stars. 
+    Bring your family, friends, and a picnic blanket!
+  </p>
+</div>

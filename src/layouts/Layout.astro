@@ -1,0 +1,31 @@
+---
+import Footer from '../components/Footer.astro';
+import BackgroundDecorations from '../components/BackgroundDecorations.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Join us for Carols in the Park - a magical evening of Christmas carols under the stars" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <script>
+      import Alpine from 'alpinejs'
+      window.Alpine = Alpine
+      Alpine.start()
+    </script>
+  </head>
+  <body>
+    <BackgroundDecorations />
+    <slot />
+    <Footer />
+  </body>
+</html>

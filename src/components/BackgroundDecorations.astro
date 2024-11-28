@@ -1,0 +1,49 @@
+---
+const decorationImages = [
+  { src: '/decoration.png', alt: 'Christmas decoration' },
+  { src: '/presents.png', alt: 'Christmas presents' },
+  { src: '/red_snowflakes.png', alt: 'Red snowflakes' }
+];
+---
+
+<div
+  x-data="{
+    decorations: [],
+    init() {
+      const count = 8;
+      const images = [
+        { src: '/decoration.png', alt: 'Christmas decoration' },
+        { src: '/presents.png', alt: 'Christmas presents' },
+        { src: '/red_snowflakes.png', alt: 'Red snowflakes' }
+      ];
+      
+      for (let i = 0; i < count; i++) {
+        this.decorations.push({
+          image: images[Math.floor(Math.random() * images.length)],
+          x: Math.random() * 90 + 5,
+          y: Math.random() * 90 + 5,
+          scale: 0.5 + Math.random() * 0.5
+        });
+      }
+    }
+  }"
+  class="fixed inset-0 pointer-events-none overflow-hidden z-0"
+>
+  <template x-for="(decoration, index) in decorations" :key="index">
+    <div
+      :style="`
+        position: absolute;
+        left: ${decoration.x}%;
+        top: ${decoration.y}%;
+        transform: translate(-50%, -50%) scale(${decoration.scale});
+        opacity: 0.25;
+      `"
+    >
+      <img 
+        :src="decoration.image.src"
+        :alt="decoration.image.alt"
+        class="w-24 h-24 object-contain"
+      />
+    </div>
+  </template>
+</div>
