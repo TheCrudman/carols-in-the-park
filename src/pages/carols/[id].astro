@@ -1,41 +1,37 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Navigation from '../../components/Navigation.astro';
-import { carols } from '../../data/carols';
+import Layout from '../../layouts/Layout.astro'
+import Navigation from '../../components/Navigation.astro'
+import { carols } from '../../data/carols'
 
 export function getStaticPaths() {
-  return carols.map(carol => ({
+  return carols.map((carol) => ({
     params: { id: carol.id },
     props: { carol },
-  }));
+  }))
 }
 
-const { carol } = Astro.props;
+const { carol } = Astro.props
 ---
 
 <Layout title={`${carol.title} - Carols in the Park`}>
-  <Navigation />
-  <main class="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-    <div class="container mx-auto px-4 py-8">
-      <a 
-        href="/" 
-        class="inline-flex items-center text-yellow-400 hover:text-yellow-300 mb-8"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-        </svg>
-        Back to All Carols
-      </a>
-
-      <div class="bg-white rounded-lg p-8 max-w-3xl mx-auto">
-        <h1 class="text-3xl font-bold text-holiday-green mb-6">{carol.title}</h1>
-        <div>
-          {carol.lyrics.map(line => (
-            line ? 
-              <p class="text-gray-700 text-lg leading-tight">{line}</p> 
-              : <div class="h-6"></div> // Spacing between verses
-          ))}
-        </div>
+  <Navigation backToCarols={true} />
+  <main class=">
+    <div class=" container mx-auto px-4 py-8">
+    <div class="bg-white rounded-lg p-8 max-w-3xl mx-auto">
+      <h1 class="text-3xl font-bold text-holiday-green mb-6">
+        {carol.title}
+      </h1>
+      <div>
+        {
+          carol.lyrics.map(
+            (line) =>
+              line ? (
+                <p class="text-gray-700 text-lg leading-tight">{line}</p>
+              ) : (
+                <div class="h-6" />
+              ) // Spacing between verses
+          )
+        }
       </div>
     </div>
   </main>

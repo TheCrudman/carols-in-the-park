@@ -1,6 +1,5 @@
 ---
-import Footer from '../components/Footer.astro'
-import BackgroundDecorations from '../components/BackgroundDecorations.astro'
+import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
   title: string
@@ -13,26 +12,16 @@ const { title } = Astro.props
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Join us for Carols in the Park - a magical evening of Christmas carols under the stars"
-    />
+    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <script>
-      import Alpine from 'alpinejs'
-      window.Alpine = Alpine
-      Alpine.start()
-    </script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
-      rel="stylesheet"
-    />
+    <ViewTransitions />
   </head>
-  <body>
-    <BackgroundDecorations />
+  <body
+    class="min-h-screen bg-gradient-to-b from-gray-800 to-gray-700 text-white"
+  >
     <slot />
-    <Footer />
   </body>
 </html>

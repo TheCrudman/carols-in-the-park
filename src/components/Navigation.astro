@@ -1,9 +1,42 @@
 ---
-import HamburgerButton from './HamburgerButton.astro';
-import NavigationMenu from './NavigationMenu.astro';
+import HamburgerButton from './HamburgerButton.astro'
+import NavigationMenu from './NavigationMenu.astro'
+
+interface Props {
+  showBack?: boolean
+  backToCarols?: boolean
+}
+
+const { showBack = true, backToCarols = false } = Astro.props
 ---
 
-<div x-data="{ isOpen: false }" class="relative">
-  <HamburgerButton />
-  <NavigationMenu />
+<div class="">
+  <div x-data="{ isOpen: false }" class="relative">
+    {
+      showBack && (
+        <a
+          href={backToCarols ? '/' : '/'}
+          class="text-white hover:text-gray-300 flex items-center gap-2 w-fit p-4"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-5 h-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+            />
+          </svg>
+          {backToCarols ? 'Back to All Carols' : 'Back to Home'}
+        </a>
+      )
+    }
+    <HamburgerButton />
+    <NavigationMenu />
+  </div>
 </div>
