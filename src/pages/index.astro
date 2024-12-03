@@ -6,12 +6,12 @@ import Navigation from '../components/Navigation.astro'
 import ChristmasInvite from '../components/ChristmasInvite.astro'
 ---
 
-<Layout title="Carols in the Park">
+<Layout
+  title="Carols in the Park"
+  description="Come join us for a festive evening of Christmas carols and uplifting musical performances as we celebrate the holiday season together!"
+>
   <Navigation showBack={false} />
-  <main
-    transition:animate="fade"
-    class="min-h-screen bg-gradient-to-b from-gray-800 to-gray-700 text-white"
-  >
+  <main transition:animate="fade">
     <Hero />
     <CarolGrid />
     <ChristmasInvite />
