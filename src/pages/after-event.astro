@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Navigation from '../components/Navigation.astro'
+---
+
+<Layout title="After the Event - Carols in the Park">
+  <Navigation />
+  <main
+    class="min-h-screen bg-gradient-to-b from-gray-800 to-gray-700 text-white"
+  >
+    <div class="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-bold text-center mb-12">After the Event</h1>
+
+      <div class="space-y-12">
+        <div class="prose prose-invert mx-auto">
+          <p class="text-lg text-center">
+            Thank you for joining us at Carols in the Park! We hope you had a
+            wonderful evening celebrating Christmas with our community at Albany
+            Lakes Civic Park.
+          </p>
+        </div>
+
+        <div class="bg-gray-900/50 rounded-lg p-6 backdrop-blur-sm">
+          <h2 class="text-2xl font-semibold mb-4">Lost Items</h2>
+          <p class="text-gray-200">
+            If you've misplaced any belongings during the event, please the
+            Shore Baptist
+            <a
+              href="https://shorebaptist.org.nz/contact-us/"
+              class="text-red-400 hover:text-red-300 underline"
+            >
+              contact page
+            </a>. Our team will do their best to help reunite you with your lost
+            items.
+          </p>
+        </div>
+
+        <div class="bg-gray-900/50 rounded-lg p-6 backdrop-blur-sm">
+          <h2 class="text-2xl font-semibold mb-4">Questions About the Event</h2>
+          <p class="text-gray-200">
+            Did any of the carols, stories, or messages shared during the
+            evening spark questions? We'd love to chat with you. Visit our
+            <a
+              href="https://shorebaptist.org.nz/contact-us/"
+              class="text-red-400 hover:text-red-300 underline"
+            >
+              contact page
+            </a>
+            to get in touch with our team who will be happy to discuss any aspect
+            of the event with you.
+          </p>
+        </div>
+
+        <div class="text-center text-lg text-gray-200">
+          <p>
+            Thank you again for being part of this special evening. We look
+            forward to connecting with you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

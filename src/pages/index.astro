@@ -1,14 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import CarolGrid from '../components/CarolGrid.astro';
-import Navigation from '../components/Navigation.astro';
+import Layout from '../layouts/Layout.astro'
+import Hero from '../components/Hero.astro'
+import CarolGrid from '../components/CarolGrid.astro'
+import Navigation from '../components/Navigation.astro'
+import ChristmasInvite from '../components/ChristmasInvite.astro'
 ---
 
 <Layout title="Carols in the Park">
   <Navigation />
-  <main class="min-h-screen bg-gradient-to-b from-gray-800 to-gray-700 text-white">
+  <main
+    class="min-h-screen bg-gradient-to-b from-gray-800 to-gray-700 text-white"
+  >
     <Hero />
     <CarolGrid />
+    <ChristmasInvite />
   </main>
 </Layout>
