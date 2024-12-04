@@ -1,20 +1,26 @@
 ---
 import { Image } from 'astro:assets'
-import shoreBaptistLogo from '../../public/shore-baptist-logo.png'
+import shoreBaptistLogo from '../../public/Shore_Baptist_40th_Anniversary_.png'
 ---
 
 <footer class="bg-white py-8 mt-auto">
   <div class="container mx-auto px-4">
     <div class="flex flex-col items-center justify-center">
-      <Image
-        src={shoreBaptistLogo}
-        alt="Shore Baptist Church"
-        class="w-48 mb-4"
-        width={200}
-        height={100}
-        format="webp"
-        quality={80}
-      />
+      <a
+        href="https://www.shorebaptist.org.nz/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src={shoreBaptistLogo}
+          alt="Shore Baptist Church"
+          class="w-48 mb-4"
+          width={400}
+          height={200}
+          format="webp"
+          quality={100}
+        />
+      </a>
       <p class="text-gray-600 text-sm text-center">
         Carols in the Park is presented by <a
           href="https://www.shorebaptist.org.nz/"

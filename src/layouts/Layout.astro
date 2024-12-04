@@ -12,6 +12,20 @@ const {
   title,
   description = 'Discover and sing along with classic Christmas carols. Find lyrics, history, and the meaning behind your favorite holiday songs.',
 } = Astro.props
+
+// Generate random positions for decorative elements
+const generateRandomPositions = (count: number) => {
+  return Array.from({ length: count }, () => ({
+    top: `${Math.random() * 90}%`,
+    left: `${Math.random() * 90}%`,
+    rotation: `rotate(${Math.random() * 360}deg)`,
+    size: `${Math.random() * 0.5 + 0.7}`, // Scale between 0.7 and 1.2
+  }))
+}
+
+const decorationPositions = generateRandomPositions(5)
+const presentPositions = generateRandomPositions(4)
+const snowflakePositions = generateRandomPositions(6)
 ---
 
 <!doctype html>
@@ -29,7 +43,41 @@ const {
     <ViewTransitions />
   </head>
   <body class="min-h-screen flex flex-col">
-    <main class="flex-1 bg-gradient-to-b from-gray-800 to-gray-700 text-white">
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+      {
+        decorationPositions.map((pos) => (
+          <img
+            src="/decoration.png"
+            alt=""
+            class="absolute w-24 h-auto opacity-20 transition-transform duration-[20s]"
+            style={`top: ${pos.top}; left: ${pos.left}; transform: ${pos.rotation} scale(${pos.size})`}
+          />
+        ))
+      }
+      {
+        presentPositions.map((pos) => (
+          <img
+            src="/presents.png"
+            alt=""
+            class="absolute w-32 h-auto opacity-20 transition-transform duration-[20s]"
+            style={`top: ${pos.top}; left: ${pos.left}; transform: ${pos.rotation} scale(${pos.size})`}
+          />
+        ))
+      }
+      {
+        snowflakePositions.map((pos) => (
+          <img
+            src="/red_snowflakes.png"
+            alt=""
+            class="absolute w-28 h-auto opacity-20 transition-transform duration-[20s]"
+            style={`top: ${pos.top}; left: ${pos.left}; transform: ${pos.rotation} scale(${pos.size})`}
+          />
+        ))
+      }
+    </div>
+    <main
+      class="flex-1 relative text-white before:absolute before:inset-0 before:bg-gradient-to-b before:from-gray-800/95 before:to-gray-700/95 before:-z-10"
+    >
       <Navigation />
       <slot />
     </main>

@@ -3,7 +3,11 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/why-christmas', label: 'Why Christmas?' },
-  { href: '/after-event', label: 'After the Event' },
+  {
+    href: '/after-event',
+    label: 'After the Event',
+    description: 'Lost property, Other meetings, etc.',
+  },
 ]
 ---
 
@@ -29,6 +33,9 @@ const links = [
             >
               {link.label}
             </a>
+            {link.description && (
+              <p class="mt-1 text-sm text-gray-400">{link.description}</p>
+            )}
           </li>
         ))
       }

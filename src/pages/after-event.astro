@@ -4,9 +4,7 @@ import Navigation from '../components/Navigation.astro'
 ---
 
 <Layout title="After the Event - Carols in the Park">
-  <main
-    class="min-h-screen bg-gradient-to-b from-gray-800 to-gray-700 text-white"
-  >
+  <main class="text-white">
     <div class="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <h1 class="text-4xl font-bold text-center mb-12">After the Event</h1>
 
@@ -22,14 +20,12 @@ import Navigation from '../components/Navigation.astro'
         <div class="bg-gray-900/50 rounded-lg p-6 backdrop-blur-sm">
           <h2 class="text-2xl font-semibold mb-4">Lost Items</h2>
           <p class="text-gray-200">
-            If you've misplaced any belongings during the event, please the
-            Shore Baptist
+            If you've misplaced any belongings during the event, please visit
+            the Shore Baptist
             <a
               href="https://shorebaptist.org.nz/contact-us/"
-              class="text-red-400 hover:text-red-300 underline"
-            >
-              contact page
-            </a>. Our team will do their best to help reunite you with your lost
+              class="text-red-400 hover:text-red-300 underline">contact page</a
+            >. Our team will do their best to help reunite you with your lost
             items.
           </p>
         </div>
@@ -48,6 +44,57 @@ import Navigation from '../components/Navigation.astro'
             to get in touch with our team who will be happy to discuss any aspect
             of the event with you.
           </p>
+        </div>
+
+        <div
+          class="bg-gray-900/90 rounded-lg overflow-hidden backdrop-blur-sm text-center relative"
+        >
+          <!-- Background gradient overlay -->
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-transparent"
+          >
+          </div>
+
+          <!-- Content with relative positioning -->
+          <div class="relative p-12 space-y-6">
+            <h2 class="text-4xl tracking-wider font-light mb-2">
+              SHORE BAPTIST CHURCH
+            </h2>
+            <div class="space-y-2">
+              <p class="text-2xl tracking-wider font-light">
+                WISHES YOU A VERY
+              </p>
+              <p
+                class="text-6xl font-bold bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 text-transparent bg-clip-text drop-shadow-lg"
+              >
+                Merry Christmas
+              </p>
+            </div>
+
+            <div class="max-w-2xl mx-auto space-y-4 mt-8">
+              <p class="text-xl tracking-wide text-gray-100">
+                and we'd like to extend a heartfelt invitation to you and your
+                family to our
+              </p>
+              <p class="text-2xl font-semibold text-yellow-300">
+                CHRISTMAS DAY SERVICE
+              </p>
+
+              <div class="inline-block mt-6 space-y-2">
+                <p class="text-3xl font-semibold text-yellow-300">9:30am</p>
+                <p class="text-xl">at Westminster Christian School</p>
+                <p class="text-gray-300 font-light">
+                  31 Westminster Gardens, Unsworth Heights, Auckland 0632
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Decorative stars -->
+          <div class="absolute top-8 left-8 text-white/20 text-2xl">✧</div>
+          <div class="absolute top-12 right-12 text-white/20 text-xl">✦</div>
+          <div class="absolute bottom-8 left-16 text-white/20 text-xl">✦</div>
+          <div class="absolute bottom-12 right-8 text-white/20 text-2xl">✧</div>
         </div>
 
         <div class="text-center text-lg text-gray-200">
