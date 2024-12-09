@@ -1,13 +1,78 @@
 ---
-import CarolCard from './CarolCard.astro';
-import { carols } from '../data/carols';
+import CarolCard from './CarolCard.astro'
+import { carols } from '../data/carols'
 ---
 
-<div class="container mx-auto px-4 py-12">
-  <h2 class="text-3xl font-semibold mb-8 text-center">Carols We&#8217;re Singing Tonight</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {carols.map(carol => (
-      <CarolCard title={carol.title} id={carol.id} />
-    ))}
+<div class="container px-4 py-12 mx-auto">
+  <h2
+    class="mb-8 text-3xl font-semibold text-center"
+    data-heading
+    data-en-title="Carols We're Singing Tonight"
+    data-zh-title="今晚我们将演唱的圣诞颂歌"
+  >
+    Carols We&#8217;re Singing Tonight
+  </h2>
+  <div
+    class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+    data-carol-grid
+  >
+    {
+      carols.map((carol) => (
+        <div key={carol.id}>
+          <CarolCard
+            title={carol.en.title}
+            id={carol.id}
+            data-carol-card
+            data-en-title={carol.en.title}
+            data-zh-title={carol.zh.title}
+          />
+        </div>
+      ))
+    }
   </div>
 </div>
+
+<script is:inline>
+  function updateContent(language) {
+    if (!language) {
+      language = localStorage.getItem('selectedLanguage') || 'en'
+    }
+
+    // Update heading
+    const heading = document.querySelector('[data-heading]')
+    if (heading) {
+      const enTitle = heading.getAttribute('data-en-title')
+      const zhTitle = heading.getAttribute('data-zh-title')
+      heading.textContent = language === 'zh' ? zhTitle : enTitle
+    }
+
+    // Update carol titles
+    const cards = document.querySelectorAll('[data-carol-card]')
+    cards.forEach((card) => {
+      const titleElement = card.querySelector('.carol-title')
+      if (titleElement) {
+        const enTitle = card.getAttribute('data-en-title')
+        const zhTitle = card.getAttribute('data-zh-title')
+        titleElement.textContent = language === 'zh' ? zhTitle : enTitle
+      }
+    })
+  }
+
+  // Initialize when DOM is ready
+  function initializePage() {
+    const storedLanguage = localStorage.getItem('selectedLanguage') || 'en'
+    updateContent(storedLanguage)
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializePage)
+  } else {
+    initializePage()
+  }
+
+  document.addEventListener('language-change', (event) => {
+    if (event.detail && event.detail.language) {
+      updateContent(event.detail.language)
+    }
+  })
+</script>

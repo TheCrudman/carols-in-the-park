@@ -14,27 +14,100 @@ const { carol } = Astro.props
 ---
 
 <Layout
-  title={carol.title}
-  description={`${carol.title} - Sing along with us!`}
+  title={carol.en.title}
+  description={`${carol.en.title} - Sing along with us!`}
 >
   <main>
-    <div class="container mx-auto px-4 py-8">
-      <div class="bg-white rounded-lg p-8 max-w-3xl mx-auto">
-        <h1 class="text-3xl font-bold text-holiday-green mb-6">
-          {carol.title}
+    <div class="container px-4 py-8 mx-auto">
+      <div class="max-w-3xl p-8 mx-auto bg-white rounded-lg">
+        <h1
+          class="mb-6 text-3xl font-bold text-holiday-green"
+          data-carol-title
+          data-en-title={carol.en.title}
+          data-zh-title={carol.zh.title}
+        >
+          {carol.en.title}
         </h1>
-        <div>
-          {
-            carol.lyrics.map((line) =>
-              line ? (
-                <p class="text-gray-700 text-lg leading-tight">{line}</p>
-              ) : (
-                <div class="h-6" />
+        <div data-carol-lyrics>
+          <div data-en-lyrics>
+            {
+              carol.en.lyrics.map((line) =>
+                line ? (
+                  <p class="text-lg leading-tight text-gray-700">{line}</p>
+                ) : (
+                  <div class="h-6" />
+                )
               )
-            )
-          }
+            }
+          </div>
+          <div data-zh-lyrics class="hidden">
+            {
+              carol.zh.lyrics.map((line) =>
+                line ? (
+                  <p class="text-lg leading-tight text-gray-700">{line}</p>
+                ) : (
+                  <div class="h-6" />
+                )
+              )
+            }
+          </div>
         </div>
       </div>
     </div>
   </main>
 </Layout>
+
+<script is:inline>
+  function updateContent(language) {
+    // Ensure we have a valid language
+    if (!language) {
+      language = localStorage.getItem('selectedLanguage') || 'en';
+    }
+    console.log('Updating content to language:', language);
+    
+    // Update title
+    const titleElement = document.querySelector('[data-carol-title]')
+    if (titleElement) {
+      const newTitle = language === 'zh' 
+        ? titleElement.getAttribute('data-zh-title')
+        : titleElement.getAttribute('data-en-title');
+      console.log('Setting title to:', newTitle);
+      titleElement.textContent = newTitle;
+    }
+
+    // Update lyrics visibility
+    const enLyrics = document.querySelector('[data-en-lyrics]')
+    const zhLyrics = document.querySelector('[data-zh-lyrics]')
+    if (enLyrics && zhLyrics) {
+      if (language === 'zh') {
+        enLyrics.classList.add('hidden')
+        zhLyrics.classList.remove('hidden')
+      } else {
+        enLyrics.classList.remove('hidden')
+        zhLyrics.classList.add('hidden')
+      }
+    }
+  }
+
+  // Function to initialize the page
+  function initializePage() {
+    const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    console.log('Initializing page with language:', storedLanguage);
+    updateContent(storedLanguage);
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializePage);
+  } else {
+    initializePage();
+  }
+
+  // Listen for language changes
+  document.addEventListener('language-change', (event) => {
+    console.log('Language change event received:', event.detail);
+    if (event.detail && event.detail.language) {
+      updateContent(event.detail.language);
+    }
+  });
+</script>
