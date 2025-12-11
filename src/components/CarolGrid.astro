@@ -24,7 +24,7 @@ import { carols } from '../data/carols'
             id={carol.id}
             data-carol-card
             data-en-title={carol.en.title}
-            data-zh-title={carol.zh.title}
+            data-zh-title={carol.zh?.title || carol.en.title}
           />
         </div>
       ))

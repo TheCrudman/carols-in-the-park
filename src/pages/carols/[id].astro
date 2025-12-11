@@ -24,7 +24,7 @@ const { carol } = Astro.props
           class="mb-6 text-3xl font-bold text-holiday-green"
           data-carol-title
           data-en-title={carol.en.title}
-          data-zh-title={carol.zh.title}
+          data-zh-title={carol.zh?.title || carol.en.title}
         >
           {carol.en.title}
         </h1>
@@ -42,11 +42,21 @@ const { carol } = Astro.props
           </div>
           <div data-zh-lyrics class="hidden">
             {
-              carol.zh.lyrics.map((line) =>
-                line ? (
-                  <p class="text-lg leading-tight text-gray-700">{line}</p>
-                ) : (
-                  <div class="h-6" />
+              carol.zh?.lyrics ? (
+                carol.zh.lyrics.map((line) =>
+                  line ? (
+                    <p class="text-lg leading-tight text-gray-700">{line}</p>
+                  ) : (
+                    <div class="h-6" />
+                  )
+                )
+              ) : (
+                carol.en.lyrics.map((line) =>
+                  line ? (
+                    <p class="text-lg leading-tight text-gray-700">{line}</p>
+                  ) : (
+                    <div class="h-6" />
+                  )
                 )
               )
             }
